@@ -1,0 +1,86 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Snapper Performance Metrics</title>  
+  <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+  <div class="container">  
+    <header>  
+      <h1>📊 Snapper Performance Metrics</h1>  
+      <p class="subtitle">Team Performance Dashboard</p>  
+    </header>
+
+    <div class="controls">  
+      <div class="report-selector">  
+        <label for="reportSelect">📅 Select Report:</label>  
+        <select id="reportSelect">  
+          <option value="">Loading...</option>  
+        </select>  
+      </div>  
+      <div class="sort-controls">  
+        <label>Sort by Name:</label>  
+        <button id="sortAZ" class="sort-btn active">A → Z</button>  
+        <button id="sortZA" class="sort-btn">Z → A</button>  
+      </div>  
+    </div>
+
+    <div id="loadingMessage" class="loading">  
+      <div class="spinner"></div>  
+      <p>Loading data...</p>  
+    </div>
+
+    <div id="errorMessage" class="error-message hidden">  
+      <p>⚠️ Unable to load data. Please check back later.</p>  
+    </div>
+
+    <div id="resultsSection" class="results-section hidden">  
+      <div class="last-updated">  
+        <span id="lastUpdated"></span>  
+      </div>  
+      <div class="table-container">  
+        <table id="resultsTable">  
+          <thead>  
+            <tr>  
+              <th class="sortable" data-sort="snapper">Snapper <span class="sort-icon">▲</span></th>  
+              <th>Alerts</th>  
+              <th>Adj. Alerts*</th>  
+              <th>FactGenie</th>  
+              <th>FactGenie%</th>  
+              <th>Avg time gap</th>  
+              <th>Snaps ≤10 secs</th>  
+              <th>Snaps ≤20 secs</th>  
+              <th>Avg length</th>  
+              <th>Snaps >150 ex. QF</th>  
+              <th>Errors</th>  
+              <th>Accuracy</th>  
+            </tr>  
+          </thead>  
+          <tbody id="resultsBody"></tbody>  
+          <tfoot id="resultsFoot"></tfoot>  
+        </table>  
+      </div>  
+        
+      <div class="notes-section">  
+        <h3>📝 Notes</h3>  
+        <ul>  
+          <li>* Adj. Alerts excludes: LEBrief, HeadlineF12, HeadlinePublishF12, Estimate</li>  
+          <li>* FactGenie includes: EditedFastFact, EditedTurboFastFact, TurboFastFact, FastFact</li>  
+          <li>* Character count includes all characters (including spaces)</li>  
+          <li>* Snaps >150 ex. QF excludes HeadlineF12 and HeadlinePublishF12</li>  
+          <li>* Snaps ≤10 and ≤20 exclude: HeadlineF12, HeadlinePublishF12, BlankAlertEditor, BlankAlertEditorF12, Estimate</li>  
+          <li>* Rows highlighted in lavender (*) are unknown snappers (not in team list) who used JSE/LSE sources</li>  
+        </ul>  
+      </div>  
+    </div>
+
+    <footer>  
+      <p>Snapper Performance Metrics Dashboard</p>  
+    </footer>  
+  </div>
+
+  <script src="app.js"></script>  
+</body>  
+</html>  
